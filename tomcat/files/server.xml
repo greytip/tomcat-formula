@@ -167,6 +167,17 @@
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"
                prefix="localhost_access_log." suffix=".txt"
                pattern="%h %l %u %t &quot;%r&quot; %s %b" />
+               
+        <Valve className="org.apache.catalina.valves.RemoteIpValve"
+           remoteIpHeader="x-forwarded-for"
+           remoteIpProxiesHeader="x-forwarded-by"
+           protocolHeader="x-forwarded-proto"
+           {% if internalProxies %}
+           internalProxies="{{ internalProxies }}"
+           {% endif %}
+         />
+
+
         </Host>
     </Engine>
   </Service>
