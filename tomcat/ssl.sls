@@ -27,6 +27,7 @@
             sslProtocol: {{ salt['pillar.get']('tomcat:connector:sslProtocol', 'TLS') }}
             keystoreFile: {{ salt['pillar.get']('tomcat:connector:keystoreFile') }}
             keystorePass: {{ salt['pillar.get']('tomcat:connector:keystorePass', '') }}
+            internalProxies: {{ salt['pillar.get']('tomcat:internalProxies', '') }}
             {% endif %}
 
 {{ tomcat.service }}-ssl:
